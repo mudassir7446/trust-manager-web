@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'trust-manager-web';
+  title = 'Trust Portal';
+  orgName = 'Shifa-E-Rehmani';
+  //TODO make the organization name configurable
 }

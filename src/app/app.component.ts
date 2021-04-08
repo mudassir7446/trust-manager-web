@@ -18,7 +18,7 @@ export class AppComponent {
     });
   }
   title = 'Trust Portal';
-  orgName = 'Shifa-E-Rehmani';
+  orgName = 'Shifa-A-Rehmani';
   orgNameClass:string ="";
   ishaatIconClass:string = "";
   saviorIconClass:string = "";

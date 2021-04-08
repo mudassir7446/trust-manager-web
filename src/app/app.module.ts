@@ -7,10 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { LayoutModule} from '@angular/cdk/layout';
+import { AppFooterComponent } from './app-footer/app-footer.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppFooterComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,8 @@ import { LayoutModule} from '@angular/cdk/layout';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    LayoutModule
+    LayoutModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

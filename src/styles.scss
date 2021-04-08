@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .flex-spacer { flex-grow: 1; }
 
-// added coming soon spinner
+// app specific css
 .coming-soon-spinner {
   display: block;
   margin: auto;
   max-height: 550px;
   max-width: 550px;
+}
+
+.hide-on-xsmall-device{
+  display: none;
 }

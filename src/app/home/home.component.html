@@ -1,0 +1,20 @@
+<mat-toolbar *ngIf="loggedIn">
+  <div>{{title}}</div>
+  <div class="flex-spacer"></div>
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+    <mat-icon style="margin-right: 10px;" class="large-device">mood</mat-icon>
+  </button>
+
+  <mat-menu #profileMenu="matMenu">
+    <mat-label mat-menu-item>{{user.firstname}} {{user.lastname}}</mat-label>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+  <div class="{{orgNameClass}}">{{orgName}}</div>
+</mat-toolbar>
+<div *ngIf="!loggedIn" class="login-wait">
+  Loading portal please wait...
+</div>

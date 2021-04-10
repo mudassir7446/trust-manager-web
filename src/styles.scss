@@ -16,3 +16,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .hide-on-xsmall-device{
   display: none;
 }
+.shifa-rehmani-icons {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  height: max-content;
+  padding-bottom: 5%;
+}
+
+.small-device-icon {
+  display: flex;
+  //flex-flow: column;
+  max-width: 100%;
+  align-content: center;
+}
+
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,14 @@
+<mat-progress-bar mode=indeterminate *ngIf="showProgressBar"></mat-progress-bar>
+<div class="login-section">
+  <form class="login-form-field-small">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input name="usename" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Passowrd</mat-label>
+      <input matInput name="password" type="password">
+    </mat-form-field>
+    <button class="login-button" mat-raised-button (click)="login()" [disabled]="!loginButtonEnabled">Login</button>
+  </form>
+</div>

@@ -1,3 +1,5 @@
+import { JwtToken } from './../models/jwt-token';
+import jwt_decode from 'jwt-decode';
 import { catchError } from 'rxjs/operators';
 import { LoginResponse } from './../models/login-response';
 import { environment } from './../../environments/environment.prod';
@@ -5,7 +7,6 @@ import { User } from '../models/user';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { stringify } from '@angular/compiler/src/util';
 
 const LOGIN_TOKEN_KEY: string = "loginToken";
 const LOGIN_API_PATH: string = "/auth/basic/login";
@@ -28,11 +29,13 @@ export class AughService
         let user = new User();
         if (token)
         {
-          user.firstname = "Mudassir";
-          user.lastname = "Rehman";
-          user.username = "MdLogin";
+          let jwtTokenDecode: JwtToken = jwt_decode(token);
+          let user = new User();
+          user.firstname = jwtTokenDecode.firstname;
+          user.lastname = jwtTokenDecode.lastname;
+          user.username = jwtTokenDecode.username;
+          resolve(user);
         }
-        resolve(user);
       }, 2000);
       ;
     });
@@ -71,11 +74,15 @@ export class AughService
       this.httpClient.post<LoginResponse>(environment.baseTrustApiUrl + LOGIN_API_PATH, payload).subscribe(response =>
       {
         let jwtToken = response.accessToken;
+        // dummy jwt token
+        //TODO expect well formed token from backend
+        jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZmlyc3RuYW1lIjoiTXVkYXNzaXIiLCJsYXN0bmFtZSI6IlJlaG1hbiIsInVzZXJuYW1lIjoibXVkYXNzaXIiLCJpYXQiOjE1MTYyMzkwMjJ9.pSBMraYAuiSBaxtHxW4hjgztd7NjkZ0QryHi7NvyN9g"
+        let jwtTokenDecode: JwtToken = jwt_decode(jwtToken);
         localStorage.setItem(LOGIN_TOKEN_KEY, jwtToken);
         let user = new User();
-        user.firstname = "Mudassir";
-        user.lastname = "Rehman";
-        user.username = "mudassir";
+        user.firstname = jwtTokenDecode.firstname;
+        user.lastname = jwtTokenDecode.lastname;
+        user.username = jwtTokenDecode.username;
         resolve(user);
       }, (err: HttpErrorResponse) => this.handleLoginError(err, reject));
     })

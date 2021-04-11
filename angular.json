@@ -65,6 +65,34 @@
                 }
               ]
             },
+            "qa01": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa01.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
+            },
             "dev": {
               "fileReplacements": [
                 {
@@ -102,6 +130,9 @@
           },
           "configurations": {
             "production": {
+              "browserTarget": "trust-manager-web:build:production"
+            },
+            "qa01": {
               "browserTarget": "trust-manager-web:build:production"
             },
             "dev": {
@@ -154,6 +185,9 @@
           },
           "configurations": {
             "production": {
+              "devServerTarget": "trust-manager-web:serve:production"
+            },
+            "qa01": {
               "devServerTarget": "trust-manager-web:serve:production"
             },
             "dev": {

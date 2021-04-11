@@ -1,4 +1,4 @@
-import { LoginService } from './../services/login.service';
+import { LoginService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { User } from '../models/user';

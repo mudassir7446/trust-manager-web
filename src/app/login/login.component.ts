@@ -1,5 +1,5 @@
 import { AlertDialogComponent, AlertMessage } from './../alert-dialog/alert-dialog.component';
-import { LoginService } from './../services/login.service';
+import { LoginService } from '../services/auth.service';
 import { MatInputModule } from '@angular/material/input';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';

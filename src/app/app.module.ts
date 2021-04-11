@@ -1,4 +1,4 @@
-import { LoginService } from './services/login.service';
+import { LoginService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 

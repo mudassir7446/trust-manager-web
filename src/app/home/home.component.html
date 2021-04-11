@@ -16,5 +16,6 @@
   <div class="{{orgNameClass}}">{{orgName}}</div>
 </mat-toolbar>
 <div *ngIf="!loggedIn" class="login-wait">
+  <mat-progress-spinner class="login-wait-spinner" mode="indeterminate"></mat-progress-spinner>
   Loading portal please wait...
 </div>

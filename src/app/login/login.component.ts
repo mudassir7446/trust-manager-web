@@ -40,21 +40,28 @@ export class LoginComponent implements OnInit
   {
     this.loginButtonEnabled = false;
     this.showProgressBar = true;
+    if (!this.username || "" === this.username)
+    {
+      // username is blank
+      this.showError("Username is empty");
+      return false;
+    }
+
+    if (!this.password || "" === this.password)
+    {
+      // username is blank
+      this.showError("Password is empty");
+      return false;
+    }
+
     this.loginService.login(this.username, this.password).then((user) =>
     {
-      //TODO add validation for blank username/password
       if (user.firstname)
       {
         this.router.navigate([''], { queryParams: {} });
       } else
       {
-        this.dialog.open(AlertDialogComponent, {
-          data: new AlertMessage("Invalid Username/Password.", () =>
-          {
-            this.loginButtonEnabled = true;
-            this.showProgressBar = false;
-          })
-        });
+        this.showError("Invalid Username/Password");
       }
     }, () =>
     {
@@ -63,5 +70,16 @@ export class LoginComponent implements OnInit
       this.loginButtonEnabled = true
     });
     return false;
+  }
+
+  public showError(message: string)
+  {
+    this.dialog.open(AlertDialogComponent, {
+      data: new AlertMessage(message, () =>
+      {
+        this.loginButtonEnabled = true;
+        this.showProgressBar = false;
+      })
+    });
   }
 }

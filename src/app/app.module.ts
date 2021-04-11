@@ -22,6 +22,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
     OverlayModule,
     MatDividerModule,
     MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [
     LoginService

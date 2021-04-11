@@ -3,11 +3,11 @@
   <form class="login-form-field-small">
     <mat-form-field>
       <mat-label>Username</mat-label>
-      <input name="usename" matInput required>
+      <input name="usename" matInput required [(ngModel)]="username">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Passowrd</mat-label>
-      <input matInput name="password" type="password" required>
+      <input matInput name="password" type="password" required [(ngModel)]="password">
     </mat-form-field>
     <button class="login-button" mat-raised-button (click)="login()" [disabled]="!loginButtonEnabled">Login</button>
   </form>

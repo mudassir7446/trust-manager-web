@@ -34,8 +34,8 @@ export class AughService
           user.firstname = jwtTokenDecode.firstname;
           user.lastname = jwtTokenDecode.lastname;
           user.username = jwtTokenDecode.username;
-          resolve(user);
         }
+        resolve(user);
       }, 2000);
       ;
     });

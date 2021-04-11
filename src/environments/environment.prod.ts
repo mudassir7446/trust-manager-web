@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseTrustApiUrl: "http://localhost:8091/trustmanager"
 };

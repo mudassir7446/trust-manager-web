@@ -1,4 +1,4 @@
-import { LoginService } from './services/auth.service';
+import { AughService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -23,6 +23,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -50,10 +51,11 @@ import { FormsModule } from '@angular/forms';
     MatDividerModule,
     MatProgressBarModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
-    LoginService
+    AughService
   ],
   bootstrap: [AppComponent]
 })

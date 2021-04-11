@@ -1,15 +1,22 @@
+import { catchError } from 'rxjs/operators';
+import { LoginResponse } from './../models/login-response';
+import { environment } from './../../environments/environment.prod';
 import { User } from '../models/user';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { stringify } from '@angular/compiler/src/util';
 
 const LOGIN_TOKEN_KEY: string = "loginToken";
+const LOGIN_API_PATH: string = "/auth/basic/login";
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService
+export class AughService
 {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   public checkLogin(): Promise<User>
   {
@@ -34,20 +41,9 @@ export class LoginService
 
   public login(username: string, password: string): Promise<User>
   {
-    return new Promise<User>((accept, reject) =>
+    return new Promise<User>((resolve, reject) =>
     {
-      setTimeout(() =>
-      {
-        let user = new User();
-        if ("mudassir" === username)
-        {
-          //TODO call remote http service from here
-          localStorage.setItem(LOGIN_TOKEN_KEY, "loginTokenValue");
-          user.firstname = "Mudassir";
-          user.lastname = "Rehman";
-        }
-        accept(user);
-      }, 1000);
+      this.performLogin(username, password).then(user => resolve(user), reject);
     });
   }
 
@@ -59,5 +55,43 @@ export class LoginService
       localStorage.removeItem(LOGIN_TOKEN_KEY);
       resolve();
     });
+  }
+
+  private performLogin(username: string, password: string): Promise<User>
+  {
+    // call server, parse response fetch user and save the token
+    return new Promise<User>((resolve, reject) =>
+    {
+      let loginPromise = this;
+      // call login server
+      let payload = {
+        username: username,
+        password: password
+      };
+      this.httpClient.post<LoginResponse>(environment.baseTrustApiUrl + LOGIN_API_PATH, payload).subscribe(response =>
+      {
+        let jwtToken = response.accessToken;
+        localStorage.setItem(LOGIN_TOKEN_KEY, jwtToken);
+        let user = new User();
+        user.firstname = "Mudassir";
+        user.lastname = "Rehman";
+        user.username = "mudassir";
+        resolve(user);
+      }, (err: HttpErrorResponse) => this.handleLoginError(err, reject));
+    })
+  }
+
+  private handleLoginError(errorResponse: HttpErrorResponse, errorCallback: Function): void
+  {
+    let message = "unknown error occured while login";
+    errorResponse.status
+    if (errorResponse.status === 401)
+    {
+      message = "Authentication failed. Invalid Username/Password";
+    }
+    if (errorCallback)
+    {
+      errorCallback(new Error(message));
+    }
   }
 }

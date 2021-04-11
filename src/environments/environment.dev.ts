@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
+  production: false,
   baseTrustApiUrl: "http://localhost:8091/trustmanager"
 };
 

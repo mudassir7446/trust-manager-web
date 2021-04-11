@@ -1,4 +1,4 @@
-import { LoginService } from '../services/auth.service';
+import { AughService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { User } from '../models/user';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit
 {
-  loginService: LoginService;
+  loginService: AughService;
   loggedIn = false;
   title = 'Trust Portal';
   orgName = 'Shifa-A-Rehmani';
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit
   user: User = new User();
   router: Router;
   //TODO make the organization name configurable
-  constructor(breakpointOberver: BreakpointObserver, loginService: LoginService, router: Router)
+  constructor(breakpointOberver: BreakpointObserver, loginService: AughService, router: Router)
   {
     this.loginService = loginService;
     this.router = router;

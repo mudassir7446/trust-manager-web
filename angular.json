@@ -64,6 +64,34 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": false,
+              "namedChunks": false,
+              "extractLicenses": false,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ]
             }
           }
         },
@@ -75,6 +103,9 @@
           "configurations": {
             "production": {
               "browserTarget": "trust-manager-web:build:production"
+            },
+            "dev": {
+              "browserTarget": "trust-manager-web:build:dev"
             }
           }
         },
@@ -124,6 +155,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "trust-manager-web:serve:production"
+            },
+            "dev": {
+              "devServerTarget": "trust-manager-web:serve:dev"
             }
           }
         }

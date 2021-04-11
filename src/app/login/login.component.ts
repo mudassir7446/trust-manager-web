@@ -1,5 +1,5 @@
 import { AlertDialogComponent, AlertMessage } from './../alert-dialog/alert-dialog.component';
-import { LoginService } from '../services/auth.service';
+import { AughService } from '../services/auth.service';
 import { MatInputModule } from '@angular/material/input';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit
   showProgressBar: boolean = false;
 
   router: Router;
-  loginService: LoginService;
+  loginService: AughService;
   dialog: MatDialog;
-  constructor(router: Router, loginService: LoginService, dialog: MatDialog)
+  constructor(router: Router, loginService: AughService, dialog: MatDialog)
   {
     this.router = router;
     this.loginService = loginService;
@@ -63,11 +63,10 @@ export class LoginComponent implements OnInit
       {
         this.showError("Invalid Username/Password");
       }
-    }, () =>
+    }, (error: Error) =>
     {
-      //TODO show error
-      this.showProgressBar = false;
-      this.loginButtonEnabled = true
+      if (error)
+        this.showError(error.message);
     });
     return false;
   }

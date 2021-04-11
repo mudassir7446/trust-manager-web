@@ -19,7 +19,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
     AppComponent,
     AppFooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    AlertDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
     MatMenuModule,
     OverlayModule,
     MatDividerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule
   ],
   providers: [
     LoginService

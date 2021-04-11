@@ -32,17 +32,20 @@ export class LoginService
     return promise;
   }
 
-  public login(): Promise<User>
+  public login(username: string, password: string): Promise<User>
   {
     return new Promise<User>((accept, reject) =>
     {
       setTimeout(() =>
       {
-        //TODO call remote http service from here
-        localStorage.setItem(LOGIN_TOKEN_KEY, "loginTokenValue");
         let user = new User();
-        user.firstname = "Mudassir";
-        user.lastname = "Rehman";
+        if ("mudassir" === username)
+        {
+          //TODO call remote http service from here
+          localStorage.setItem(LOGIN_TOKEN_KEY, "loginTokenValue");
+          user.firstname = "Mudassir";
+          user.lastname = "Rehman";
+        }
         accept(user);
       }, 1000);
     });

@@ -1,8 +1,10 @@
+import { AlertDialogComponent, AlertMessage } from './../alert-dialog/alert-dialog.component';
 import { LoginService } from './../services/login.service';
 import { MatInputModule } from '@angular/material/input';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -18,10 +20,12 @@ export class LoginComponent implements OnInit
 
   router: Router;
   loginService: LoginService;
-  constructor(router: Router, loginService: LoginService)
+  dialog: MatDialog;
+  constructor(router: Router, loginService: LoginService, dialog: MatDialog)
   {
     this.router = router;
     this.loginService = loginService;
+    this.dialog = dialog;
   }
 
   ngOnInit(): void
@@ -36,9 +40,22 @@ export class LoginComponent implements OnInit
   {
     this.loginButtonEnabled = false;
     this.showProgressBar = true;
-    this.loginService.login().then((user) =>
+    this.loginService.login(this.username, this.password).then((user) =>
     {
-      this.router.navigate([''], { queryParams: {} });
+      //TODO add validation for blank username/password
+      if (user.firstname)
+      {
+        this.router.navigate([''], { queryParams: {} });
+      } else
+      {
+        this.dialog.open(AlertDialogComponent, {
+          data: new AlertMessage("Invalid Username/Password.", () =>
+          {
+            this.loginButtonEnabled = true;
+            this.showProgressBar = false;
+          })
+        });
+      }
     }, () =>
     {
       //TODO show error

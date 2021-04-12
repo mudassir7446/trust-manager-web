@@ -23,20 +23,16 @@ export class AughService
   {
     let promise = new Promise<User>((resolve, reject) =>
     {
-      setTimeout(() =>
+      let token = localStorage.getItem(LOGIN_TOKEN_KEY);
+      let user = new User();
+      if (token)
       {
-        let token = localStorage.getItem(LOGIN_TOKEN_KEY);
-        let user = new User();
-        if (token)
-        {
-          let jwtTokenDecode: JwtToken = jwt_decode(token);
-          let user = new User();
-          user.firstname = jwtTokenDecode.firstname;
-          user.lastname = jwtTokenDecode.lastname;
-          user.username = jwtTokenDecode.username;
-        }
-        resolve(user);
-      }, 2000);
+        let jwtTokenDecode: JwtToken = jwt_decode(token);
+        user.firstname = jwtTokenDecode.firstname;
+        user.lastname = jwtTokenDecode.lastname;
+        user.username = jwtTokenDecode.username;
+      }
+      resolve(user);
       ;
     });
     return promise;

@@ -18,13 +18,21 @@ export class AuthenticationGuard implements CanActivate
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
   {
-    if (this.loginService.checkLogin())
+
+    let promise = new Promise<boolean>((resolve, reject) =>
     {
-      return true;
-    }
-    // no login information available
-    this.router.navigate(['login'], {});
-    return false;
+      this.loginService.checkLogin().then((user) =>
+      {
+        if (user.firstname)
+        {
+          resolve(true);
+          return;
+        }
+        this.router.navigate(['login'], {});
+        resolve(false);
+      })
+    });
+    return promise;
   }
 
 }

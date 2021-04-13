@@ -1,3 +1,6 @@
+import { CasesTableComponent } from './cases-table/cases-table.component';
+import { BeneficiaryTableComponent } from './beneficiary-table/beneficiary-table.component';
+import { HospitalTableComponent } from './hospital-table/hospital-table.component';
 import { DoctorTableComponent } from './doctor-table/doctor-table.component';
 import { AuthenticationGuard } from './authentication.guard';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +16,15 @@ const routes: Routes = [
       {
         path: 'doctors',
         component: DoctorTableComponent
+      }, {
+        path: 'hospitals',
+        component: HospitalTableComponent
+      }, {
+        path: 'beneficiaries',
+        component: BeneficiaryTableComponent
+      }, {
+        path: 'cases',
+        component: CasesTableComponent
       }
     ]
   }, {

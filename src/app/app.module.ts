@@ -27,6 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DoctorTableComponent } from './doctor-table/doctor-table.component';
 import { MatTableModule } from '@angular/material/table';
+import { HospitalTableComponent } from './hospital-table/hospital-table.component';
+import { CasesTableComponent } from './cases-table/cases-table.component';
+import { BeneficiaryTableComponent } from './beneficiary-table/beneficiary-table.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { MatTableModule } from '@angular/material/table';
     HomeComponent,
     LoginComponent,
     AlertDialogComponent,
-    DoctorTableComponent
+    DoctorTableComponent,
+    HospitalTableComponent,
+    CasesTableComponent,
+    BeneficiaryTableComponent
   ],
   imports: [
     BrowserModule,

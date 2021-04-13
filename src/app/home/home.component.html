@@ -22,7 +22,7 @@
     <mat-label *ngIf="!smallDevice">Hospitals</mat-label>
   </button>
   <mat-menu #hospitalMenu="matMenu">
-    <button mat-menu-item>Show All</button>
+    <button mat-menu-item (click)="showHospitals()">Show All</button>
     <button mat-menu-item>Add New</button>
   </mat-menu>
   <!-- hospital menu section ends -->
@@ -33,7 +33,7 @@
     <mat-label *ngIf="!smallDevice">Beneficiaries</mat-label>
   </button>
   <mat-menu #patientMenu="matMenu">
-    <button mat-menu-item>Show All</button>
+    <button mat-menu-item (click)="showBeneficiaries()">Show All</button>
     <button mat-menu-item>Add New</button>
   </mat-menu>
   <!-- patient menu section ends -->
@@ -44,7 +44,7 @@
     <mat-label *ngIf="!smallDevice">Cases</mat-label>
   </button>
   <mat-menu #casesMenu="matMenu">
-    <button mat-menu-item>Show All</button>
+    <button mat-menu-item (click)="showCases()">Show All</button>
     <button mat-menu-item>Add New</button>
   </mat-menu>
   <!-- cases menu section ends -->

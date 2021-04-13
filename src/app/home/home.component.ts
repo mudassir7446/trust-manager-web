@@ -90,6 +90,22 @@ export class HomeComponent implements OnInit
     this.router.navigate(['./doctors'], {});
   }
 
+  public showBeneficiaries(): void
+  {
+    this.router.navigate(['./beneficiaries'], {});
+  }
+
+  public showHospitals(): void
+  {
+    this.router.navigate(['./hospitals'], {});
+  }
+
+  public showCases(): void
+  {
+    this.router.navigate(['./cases'], {});
+  }
+
+
   private showError(param: any): void
   {
     //TODO show error on login

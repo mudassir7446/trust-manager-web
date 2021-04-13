@@ -38,6 +38,9 @@ export class HomeComponent implements OnInit
         this.saviorIconClass = "small-device-icon";
         this.ishaatIconClass = "small-device-icon";
         this.smallDevice = true;
+      } else
+      {
+        this.smallDevice = false;
       }
     });
   }

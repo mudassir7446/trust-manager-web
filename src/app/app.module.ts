@@ -26,6 +26,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DoctorTableComponent } from './doctor-table/doctor-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { DoctorTableComponent } from './doctor-table/doctor-table.component';
     MatDialogModule,
     FormsModule,
     HttpClientModule,
-    JwtModule
+    JwtModule,
+    MatTableModule
   ],
   providers: [
     AughService

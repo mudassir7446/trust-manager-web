@@ -8,7 +8,7 @@
     <mat-label *ngIf="!smallDevice">Doctors</mat-label>
   </button>
   <mat-menu #doctorMenu="matMenu">
-    <button mat-menu-item>Show All</button>
+    <button mat-menu-item (click)="showDoctors()">Show All</button>
     <button mat-menu-item>Add New</button>
   </mat-menu>
   <!-- doctor menu section ends -->

@@ -1,1 +1,25 @@
-<p>doctor-table works!</p>
+<div class="table-section">
+  <table mat-table [dataSource]="doctors" class="mat-elevation-z8 doctor-table">
+    <!-- doctor id column -->
+    <ng-container matColumnDef="doctorId">
+      <th mat-header-cell *matHeaderCellDef>Doctor ID</th>
+      <td mat-cell *matCellDef="let element"> {{element.doctorId}} </td>
+    </ng-container>
+    <!-- doctor firstname column -->
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+    </ng-container>
+
+    <!-- doctor lastname column -->
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

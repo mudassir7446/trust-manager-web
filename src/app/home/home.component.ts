@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit
 
   public showDoctors(): void
   {
-    //TODO show doctors panel
+    this.router.navigate(['./doctors'], {});
   }
 
   private showError(param: any): void

@@ -25,6 +25,7 @@ import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { DoctorTableComponent } from './doctor-table/doctor-table.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     AppFooterComponent,
     HomeComponent,
     LoginComponent,
-    AlertDialogComponent
+    AlertDialogComponent,
+    DoctorTableComponent
   ],
   imports: [
     BrowserModule,

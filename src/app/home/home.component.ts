@@ -1,3 +1,4 @@
+import { DoctorTableComponent } from './../doctor-table/doctor-table.component';
 import { AughService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit
   saviorIconClass: string = "";
   user: User = new User();
   router: Router;
+  smallDevice: boolean = false;
   //TODO make the organization name configurable
   constructor(breakpointOberver: BreakpointObserver, loginService: AughService, router: Router)
   {
@@ -31,8 +33,12 @@ export class HomeComponent implements OnInit
     });
     breakpointOberver.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium]).subscribe(result =>
     {
-      this.saviorIconClass = "small-device-icon";
-      this.ishaatIconClass = "small-device-icon"
+      if (result.matches)
+      {
+        this.saviorIconClass = "small-device-icon";
+        this.ishaatIconClass = "small-device-icon";
+        this.smallDevice = true;
+      }
     });
   }
 
@@ -67,6 +73,11 @@ export class HomeComponent implements OnInit
       this.loggedIn = true;
       this.user = user;
     }
+  }
+
+  public showDoctors(): void
+  {
+    //TODO show doctors panel
   }
 
   private showError(param: any): void

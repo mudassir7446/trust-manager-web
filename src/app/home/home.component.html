@@ -1,10 +1,58 @@
 <mat-toolbar *ngIf="loggedIn">
   <div>{{title}}</div>
+  <mat-divider vertical class="toolbar-divider"></mat-divider>
+  <!-- //TODO change doctor icon -->
+  <!-- doctor menu section starts-->
+  <button mat-button [matMenuTriggerFor]="doctorMenu" class="toolbar-button">
+    <mat-icon class="large-device">medication</mat-icon>
+    <mat-label *ngIf="!smallDevice">Doctors</mat-label>
+  </button>
+  <mat-menu #doctorMenu="matMenu">
+    <button mat-menu-item>Show All</button>
+    <button mat-menu-item>Add New</button>
+  </mat-menu>
+  <!-- doctor menu section ends -->
+
+  <!-- hospital menu section starts-->
+  <button mat-button [matMenuTriggerFor]="hospitalMenu">
+    <mat-icon class="large-device">local_hospital</mat-icon>
+    <mat-label *ngIf="!smallDevice">Hospitals</mat-label>
+  </button>
+  <mat-menu #hospitalMenu="matMenu">
+    <button mat-menu-item>Show All</button>
+    <button mat-menu-item>Add New</button>
+  </mat-menu>
+  <!-- hospital menu section ends -->
+
+  <!-- patient menu section starts-->
+  <button mat-button [matMenuTriggerFor]="patientMenu">
+    <mat-icon class="large-device">personal_injury</mat-icon>
+    <mat-label *ngIf="!smallDevice">Beneficiaries</mat-label>
+  </button>
+  <mat-menu #patientMenu="matMenu">
+    <button mat-menu-item>Show All</button>
+    <button mat-menu-item>Add New</button>
+  </mat-menu>
+  <!-- patient menu section ends -->
+
+  <!-- cases menu section starts-->
+  <button mat-button [matMenuTriggerFor]="casesMenu">
+    <mat-icon class="large-device">assignment</mat-icon>
+    <mat-label *ngIf="!smallDevice">Cases</mat-label>
+  </button>
+  <mat-menu #casesMenu="matMenu">
+    <button mat-menu-item>Show All</button>
+    <button mat-menu-item>Add New</button>
+  </mat-menu>
+  <!-- cases menu section ends -->
+
+
   <div class="flex-spacer"></div>
-  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+  <!-- profile menu section starts -->
+  <button mat-button [matMenuTriggerFor]="profileMenu">
     <mat-icon style="margin-right: 10px;" class="large-device">mood</mat-icon>
   </button>
-
+  <!-- profile menu section ends -->
   <mat-menu #profileMenu="matMenu">
     <mat-label mat-menu-item>{{user.firstname}} {{user.lastname}}</mat-label>
     <mat-divider></mat-divider>
@@ -19,3 +67,4 @@
   <mat-progress-spinner class="login-wait-spinner" mode="indeterminate"></mat-progress-spinner>
   Loading portal please wait...
 </div>
+<router-outlet></router-outlet>

@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit
   user: User = new User();
   router: Router;
   smallDevice: boolean = false;
+  xSmallDevice: boolean = false;
   //TODO make the organization name configurable
   constructor(breakpointOberver: BreakpointObserver, loginService: AughService, router: Router)
   {
@@ -29,14 +30,20 @@ export class HomeComponent implements OnInit
     this.router = router;
     breakpointOberver.observe([Breakpoints.XSmall]).subscribe(result =>
     {
-      this.orgNameClass = result.matches ? "hide-on-xsmall-device" : "";
+      if (result.matches)
+      {
+        this.orgNameClass = "hide-on-xsmall-device";
+        this.xSmallDevice = true;
+      } else
+      {
+        this.orgNameClass = "";
+        this.xSmallDevice = false;
+      }
     });
-    breakpointOberver.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium]).subscribe(result =>
+    breakpointOberver.observe([Breakpoints.XSmall, Breakpoints.Small]).subscribe(result =>
     {
       if (result.matches)
       {
-        this.saviorIconClass = "small-device-icon";
-        this.ishaatIconClass = "small-device-icon";
         this.smallDevice = true;
       } else
       {

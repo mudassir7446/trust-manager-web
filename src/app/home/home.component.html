@@ -3,7 +3,7 @@
   <mat-divider vertical class="toolbar-divider"></mat-divider>
   <!-- //TODO change doctor icon -->
   <!-- doctor menu section starts-->
-  <button mat-button [matMenuTriggerFor]="doctorMenu" class="toolbar-button">
+  <button mat-button [matMenuTriggerFor]="doctorMenu" *ngIf="!xSmallDevice" class="toolbar-button">
     <mat-icon class="large-device">medication</mat-icon>
     <mat-label *ngIf="!smallDevice">Doctors</mat-label>
   </button>
